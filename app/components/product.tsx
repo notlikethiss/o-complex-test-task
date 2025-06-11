@@ -48,37 +48,44 @@ const Product: FC<ProductProps> = observer(
         <h1 className="lg:text-3xl sm:text-2xl text-black font-bold">
           {title}
         </h1>
-        <p className="lg:text-2xl sm:text-lg text-black max-w-[100%] text-wrap my-2">
+        <p className="lg:text-2xl sm:text-lg text-black max-w-full text-wrap my-2">
           {description}
         </p>
-        <h1 className="lg:text-3xl sm:text-2xl text-black mb-2">
-          Цена: {price}
-        </h1>
 
         {quantity === 0 ? (
-          <button
-            className="bg-[#222222] w-[100%] p-3 rounded-2xl text-white"
-            onClick={handleBuy}
-          >
-            Купить
-          </button>
+          <div className="flex flex-col w-full items-center">
+            <h1 className="lg:text-3xl sm:text-2xl text-black mb-2">
+              Цена: {price}₽
+            </h1>
+            <button
+              className="bg-[#222222] w-full p-3 rounded-2xl text-white"
+              onClick={handleBuy}
+            >
+              Купить
+            </button>
+          </div>
         ) : (
-          <div className="flex items-center justify-between w-[100%] gap-2">
-            <button
-              className="bg-[#222222] w-full p-3 rounded-2xl text-white"
-              onClick={handleDecrement}
-            >
-              −
-            </button>
-            <div className="bg-[#222222] w-full text-center p-3 rounded-2xl text-white">
-              {quantity}
+          <div className="flex flex-col">
+            <h1 className="lg:text-3xl sm:text-2xl text-black mb-2">
+              Цена: {price}₽
+            </h1>
+            <div className="flex items-center justify-between w-full gap-2">
+              <button
+                className="bg-[#222222] w-full p-3 rounded-2xl text-white"
+                onClick={handleDecrement}
+              >
+                −
+              </button>
+              <div className="bg-[#222222] w-full text-center p-3 rounded-2xl text-white">
+                {quantity}
+              </div>
+              <button
+                className="bg-[#222222] w-full p-3 rounded-2xl text-white"
+                onClick={handleIncrement}
+              >
+                +
+              </button>
             </div>
-            <button
-              className="bg-[#222222] w-full p-3 rounded-2xl text-white"
-              onClick={handleIncrement}
-            >
-              +
-            </button>
           </div>
         )}
       </div>
